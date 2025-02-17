@@ -19,3 +19,44 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer base {
+  * {
+    @apply p-0 m-0 box-border;
+  }
+
+  html {
+    @apply text-[16px] font-sans;
+  }
+}
+
+/* Header Styling */
+.Header {
+  @apply bg-[var(--header-bg-color)] h-[var(--header-height)] flex items-center justify-around relative;
+}
+
+.Header .place {
+  @apply text-lg flex items-center;
+}
+
+.Header .place i {
+  @apply mr-1;
+}
+
+/* Main Styling */
+.Main {
+  @apply my-0 py-5 h-[var(--main-height)] overflow-y-auto overflow-x-hidden;
+}
+
+/* Responsive Styles */
+@media (max-width: 821px) {
+  .Main {
+    @apply mx-8;
+  }
+}
+
+@media (min-width: 822px) {
+  .Main {
+    @apply mx-28;
+  }
+}
