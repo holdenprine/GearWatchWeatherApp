@@ -202,4 +202,63 @@ body {
   }
 }
 
+/* Current Waether */
+.CurrentWeather {
+  @apply flex;
+  
+  @media screen and (max-width: 745px) {
+    @apply flex-col;
+  }
+}
+
+/* Temperature and Other Infos Styling */
+.CurrentWeather .temperature,
+.CurrentWeather .other-infos {
+  @apply p-4 border border-[var(--secondary-text-color)] rounded-[1rem];
+}
+
+/* Temperature Styling */
+.CurrentWeather .temperature {
+  @apply w-[250px] h-auto;
+
+  .value .real {
+    @apply text-3xl;
+  }
+
+  .value .feels-like {
+    @apply text-base;
+  }
+
+  .summary {
+    @apply mt-4 text-xl;
+  }
+}
+
+/* Other Infos Styling */
+.CurrentWeather .other-infos {
+  @apply flex-1 h-auto ml-4 flex justify-center items-center flex-wrap;
+
+  /* Responsive Styles */
+  @media screen and (max-width: 745px) {
+    @apply ml-0 mt-4;
+  }
+
+  /* Widget Styling */
+  .widget {
+    @apply w-[182px];
+
+    .widget-container {
+      @apply p-2 m-2 flex flex-col items-center;
+
+      .info {
+        @apply flex text-xl mb-2;
+
+        .icon {
+          @apply mr-2;
+        }
+      }
+    }
+  }
+}
+
 
