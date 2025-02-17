@@ -182,12 +182,22 @@ body {
 }
 
 /* Loader Before and After Styling */
-.Loader .loader:before,
-.Loader .loader:after {
-  @apply absolute top-[4px] left-[-40px] w-[36px] h-[20px] bg-[radial-gradient(farthest-side,_#fff_96%,_#0000)] bg-[var(--c)_100%_100%_/30%_60%] bg-[var(--c)_70%_0_/50%_100%] bg-[var(--c)_0_100%_/36%_68%] bg-[var(--c)_27%_18%_/26%_40%] bg-[linear-gradient(#fff_0_0)_bottom/67%_58%] bg-repeat-no-repeat;
-  content: '';
-  animation: l10 2s linear infinite;
+@layer components {
+  .Loader .loader:before,
+  .Loader .loader:after {
+    @apply absolute top-[4px] left-[-40px] w-[36px] h-[20px] 
+      bg-[radial-gradient(farthest-side,_#fff_96%,_#0000)] 
+      bg-[var(--c)_100%_100%_/30%_60%] 
+      bg-[var(--c)_70%_0_/50%_100%] 
+      bg-[var(--c)_0_100%_/36%_68%] 
+      bg-[var(--c)_27%_18%_/26%_40%] 
+      bg-[linear-gradient(#fff_0_0)_bottom/67%_58%] 
+      bg-no-repeat; /* Use `bg-no-repeat` instead of `bg-repeat-no-repeat` */
+    content: '';
+    animation: l10 2s linear infinite;
+  }
 }
+
 
 /* Loader After Specific Styling */
 .Loader .loader:after {
@@ -205,10 +215,13 @@ body {
 /* Current Waether */
 .CurrentWeather {
   @apply flex;
-  
-  @media screen and (max-width: 745px) {
+}
+
+@media screen and (max-width: 745px) {
+  .CurrentWeather {
     @apply flex-col;
   }
+  
 }
 
 /* Temperature and Other Infos Styling */
@@ -239,9 +252,9 @@ body {
   @apply flex-1 h-auto ml-4 flex justify-center items-center flex-wrap;
 
   /* Responsive Styles */
-  @media screen and (max-width: 745px) {
+  /* @media screen and (max-width: 745px) {
     @apply ml-0 mt-4;
-  }
+  } */
 
   /* Widget Styling */
   .widget {
@@ -260,5 +273,57 @@ body {
     }
   }
 }
+
+@media screen and (max-width: 745px) {
+  .CurrentWeather .other-infos {
+    @apply ml-0 mt-4;
+  }
+  
+}
+
+/* Forecast */
+.Forecast {
+  @apply mt-8 select-none;
+}
+
+/* Widget Container */
+.Forecast .widget-container {
+  @apply flex items-center overflow-hidden mt-2 pt-6;
+}
+
+/* Widget Styling */
+.Forecast .widget-container .widget {
+  @apply relative cursor-pointer flex flex-col items-center 
+    p-3 mr-3 min-w-[115px] border border-[var(--secondary-text-color)] 
+    rounded-[1rem];
+}
+
+/* Day Positioning */
+.Forecast .widget-container .widget .day {
+  @apply absolute -top-6;
+}
+
+/* Icon and Temperature Styling */
+.Forecast .widget-container .widget .icon-temp {
+  @apply flex flex-col items-center my-3;
+}
+
+.Forecast .widget-container .widget .icon-temp img {
+  @apply w-10 mr-1;
+}
+
+/* Wind Styling */
+.Forecast .widget-container .widget .wind {
+  @apply mt-1 flex;
+}
+
+.Forecast .widget-container .widget .wind .speed {
+  @apply mr-1;
+}
+
+.Forecast .widget-container .widget .wind .wind-dir {
+  @apply text-xs ml-1;
+}
+
 
 
