@@ -9,13 +9,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        mainBg: 'var(--main-bg-color)',
+        headerBg: 'var(--header-bg-color)',
+        borderColor: 'var(--border-color)',
+        primaryText: 'var(--primary-text-color)',
+        secondaryText: 'var(--secondary-text-color)',
       },
       fontFamily: {
         sans: ['Quicksand', 'sans-serif']
       }
     },
   },
+  darkMode: 'class',
   plugins: [],
 } satisfies Config;

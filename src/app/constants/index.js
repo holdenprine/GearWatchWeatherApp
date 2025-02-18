@@ -1,0 +1,56 @@
+export const DEFAULT_PLACE = {
+    name: 'Los Angeles',
+    place_id: 'los_angeles',
+    adm_area1: 'California',
+    adm_area2: 'USA',
+    country: 'USA',
+    lat: '34.0522° N',
+    lon: '118.2437° W',
+    timezone: 'Pacific',
+    type: 'settlement',
+  };
+  export const MEASUREMENT_SYSTEMS = {
+    AUTO: 'auto',
+    METRIC: 'metric',
+    UK: 'uk',
+    US: 'us',
+    CA: 'ca',
+  };
+  export const UNITS = {
+    metric: {
+      temperature: '°C',
+      precipitation: 'mm/h',
+      wind_speed: 'm/s',
+      visibility: 'km',
+      humidity: '%',
+      uv_index: '',
+      cloud_cover: '%',
+    },
+    us: {
+      temperature: '°F',
+      precipitation: 'in/h',
+      wind_speed: 'mph',
+      visibility: 'mi',
+      humidity: '%',
+      uv_index: '',
+      cloud_cover: '%',
+    },
+    uk: {
+      temperature: '°C',
+      precipitation: 'mm/h',
+      wind_speed: 'mph',
+      visibility: 'mi',
+      humidity: '%',
+      uv_index: '',
+      cloud_cover: '%',
+    },
+    ca: {
+      temperature: '°C',
+      precipitation: 'mm/h',
+      wind_speed: 'km/h',
+      visibility: 'km',
+      humidity: '%',
+      uv_index: '',
+      cloud_cover: '%',
+    },
+  };

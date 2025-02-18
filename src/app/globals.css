@@ -2,7 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+@layer base {
+  * {
+    @apply p-0 m-0 box-border;
+  }
+}
+  html {
+    @apply text-[16px] font-sans;
+  }
+
+  :root {
+    --main-bg-color: #ffffff;
+    --header-bg-color: #f8f9fa;
+    --border-color: #e0e0e0;
+    --primary-text-color: #333333;
+    --secondary-text-color: #666666;
+  }
+  
+  .dark {
+    --main-bg-color: #1a1a1a;
+    --header-bg-color: #333333;
+    --border-color: #555555;
+    --primary-text-color: #f5f5f5;
+    --secondary-text-color: #cccccc;
+  }
+
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -12,23 +38,15 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--primary-text-color);
+  background: var(--main-bg-color);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer base {
-  * {
-    @apply p-0 m-0 box-border;
-  }
 
-  html {
-    @apply text-[16px] font-sans;
-  }
-}
 
 /* Header Styling */
 .Header {
@@ -60,3 +78,252 @@ body {
     @apply mx-28;
   }
 }
+
+/* Search */
+.search-container {
+  @apply flex border-[var(--secondary-text-color)] rounded-[20px] py-0 px-4;
+}
+
+
+.search-container .search-icon,
+.search-container .search-input input {
+  @apply h-[40px];
+}
+
+.search-container .search-icon {
+  @apply flex justify-center items-center text-[1.3rem] pr-4;
+}
+
+.search-container .search-input input {
+  @apply bg-transparent text-[var(--primary-text-color)] border-0 outline-none text-[1rem];
+}
+
+
+.search-results {
+  @apply rounded-[0.5rem] bg-[var(--header-bg-color)] absolute z-[1] top-[calc(var(--header-height)+0.25rem)] w-[50%] max-h-[50vh] overflow-x-hidden;
+}
+
+
+.search-results .results-container .result {
+  @apply p-4 text-[1.1rem] cursor-pointer;
+}
+
+.search-results .results-container .result:hover {
+  @apply bg-[var(--border-color)];
+}
+
+/* Settings */
+/* Settings Container Styling */
+.Settings {
+  @apply flex text-[1.25rem];
+}
+
+/* Theme Toggler Styling */
+.Settings .theme-toggler {
+  @apply relative;
+}
+
+.Settings .theme-toggler .theme-buttons {
+  @apply cursor-pointer flex relative h-[25px] w-[25px] overflow-hidden;
+}
+
+.Settings .theme-toggler .theme-buttons .light-theme-btn,
+.Settings .theme-toggler .theme-buttons .dark-theme-btn {
+  @apply absolute top-[25px] transition-all duration-500 ease-in-out;
+}
+
+.Settings .theme-toggler .theme-buttons .light-theme-btn.active,
+.Settings .theme-toggler .theme-buttons .dark-theme-btn.active {
+  @apply top-0;
+}
+
+/* Settings Button Styling */
+.Settings .settings-btn {
+  @apply ml-4 cursor-pointer;
+}
+
+/* Settings Menu Styling */
+.Settings .settings-menu {
+  @apply absolute z-[2] top-[calc(var(--header-height)+0.25rem)] right-[2rem] rounded-[0.5rem] bg-[var(--header-bg-color)] w-[250px] p-2 text-[1rem] select-none;
+  @apply transform scale-[0.1] invisible transition-all duration-200 ease-in-out;
+}
+
+.Settings .settings-menu.open {
+  @apply transform scale-[1] visible;
+}
+
+/* Measurement Systems Styling */
+.Settings .settings-menu .measurement-systems {
+  @apply p-2;
+}
+
+.Settings .settings-menu .measurement-systems .systems {
+  @apply flex flex-wrap mt-2;
+}
+
+.Settings .settings-menu .measurement-systems .systems .system {
+  @apply flex items-center justify-center w-[4rem] h-[2rem] m-1 border-[1px] border-[var(--border-color)] rounded-[0.5rem] cursor-pointer;
+}
+
+.Settings .settings-menu .measurement-systems .systems .system.active {
+  @apply bg-[var(--primary-text-color)] text-[var(--main-bg-color)];
+}
+
+/* Loader */
+/* Loader Container Styling */
+.Loader {
+  @apply flex items-center justify-center;
+}
+
+/* Loader Styling */
+.Loader .loader {
+  @apply relative overflow-hidden w-[80px] h-[40px];
+  background: radial-gradient(circle 25px at top right, #ffd738 40%, transparent), transparent;
+}
+
+/* Loader Before and After Styling */
+@layer components {
+  .Loader .loader:before,
+  .Loader .loader:after {
+    @apply absolute top-[4px] left-[-40px] w-[36px] h-[20px] 
+      bg-[radial-gradient(farthest-side,_#fff_96%,_#0000)] 
+      bg-[var(--c)_100%_100%_/30%_60%] 
+      bg-[var(--c)_70%_0_/50%_100%] 
+      bg-[var(--c)_0_100%_/36%_68%] 
+      bg-[var(--c)_27%_18%_/26%_40%] 
+      bg-[linear-gradient(#fff_0_0)_bottom/67%_58%] 
+      bg-no-repeat; /* Use `bg-no-repeat` instead of `bg-repeat-no-repeat` */
+    content: '';
+    animation: l10 2s linear infinite;
+  }
+}
+
+
+/* Loader After Specific Styling */
+.Loader .loader:after {
+  @apply top-[15px];
+  --l: 200%;
+}
+
+/* Keyframe Animation */
+@keyframes l10 {
+  100% {
+    left: var(--l, 105%);
+  }
+}
+
+/* Current Waether */
+.CurrentWeather {
+  @apply flex;
+}
+
+@media screen and (max-width: 745px) {
+  .CurrentWeather {
+    @apply flex-col;
+  }
+  
+}
+
+/* Temperature and Other Infos Styling */
+.CurrentWeather .temperature,
+.CurrentWeather .other-infos {
+  @apply p-4 border border-[var(--secondary-text-color)] rounded-[1rem];
+}
+
+/* Temperature Styling */
+.CurrentWeather .temperature {
+  @apply w-[250px] h-auto;
+
+  .value .real {
+    @apply text-3xl;
+  }
+
+  .value .feels-like {
+    @apply text-base;
+  }
+
+  .summary {
+    @apply mt-4 text-xl;
+  }
+}
+
+/* Other Infos Styling */
+.CurrentWeather .other-infos {
+  @apply flex-1 h-auto ml-4 flex justify-center items-center flex-wrap;
+
+  /* Responsive Styles */
+  /* @media screen and (max-width: 745px) {
+    @apply ml-0 mt-4;
+  } */
+
+  /* Widget Styling */
+  .widget {
+    @apply w-[182px];
+
+    .widget-container {
+      @apply p-2 m-2 flex flex-col items-center;
+
+      .info {
+        @apply flex text-xl mb-2;
+
+        .icon {
+          @apply mr-2;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 745px) {
+  .CurrentWeather .other-infos {
+    @apply ml-0 mt-4;
+  }
+  
+}
+
+/* Forecast */
+.Forecast {
+  @apply mt-8 select-none;
+}
+
+/* Widget Container */
+.Forecast .widget-container {
+  @apply flex items-center overflow-hidden mt-2 pt-6;
+}
+
+/* Widget Styling */
+.Forecast .widget-container .widget {
+  @apply relative cursor-pointer flex flex-col items-center 
+    p-3 mr-3 min-w-[115px] border border-[var(--secondary-text-color)] 
+    rounded-[1rem];
+}
+
+/* Day Positioning */
+.Forecast .widget-container .widget .day {
+  @apply absolute -top-6;
+}
+
+/* Icon and Temperature Styling */
+.Forecast .widget-container .widget .icon-temp {
+  @apply flex flex-col items-center my-3;
+}
+
+.Forecast .widget-container .widget .icon-temp img {
+  @apply w-10 mr-1;
+}
+
+/* Wind Styling */
+.Forecast .widget-container .widget .wind {
+  @apply mt-1 flex;
+}
+
+.Forecast .widget-container .widget .wind .speed {
+  @apply mr-1;
+}
+
+.Forecast .widget-container .widget .wind .wind-dir {
+  @apply text-xs ml-1;
+}
+
+
+
