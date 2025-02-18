@@ -8,19 +8,19 @@ import Main from "./components/Main";
 
 export default function Home() {
 
-  // forces Typescript to view this as a React Component
-  const IconComponent = TbSunMoon as unknown as React.FC;
+  // // forces Typescript to view this as a React Component
+  // const IconComponent = TbSunMoon as unknown as React.FC;
 
-   // Functionality may exist outside of the header but for now it will live here
+  //  // Functionality may exist outside of the header but for now it will live here
     const [isDark, setIsDark] = useState(false);
   
-    useEffect(() => {
-      if(isDark) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark")
-      }
-    }, [isDark]);
+  //   useEffect(() => {
+  //     if(isDark) {
+  //       document.documentElement.classList.add("dark");
+  //     } else {
+  //       document.documentElement.classList.remove("dark")
+  //     }
+  //   }, [isDark]);
 
   return (
     <>
@@ -28,9 +28,9 @@ export default function Home() {
     <div className="Header">
       <Header />
       </div>
-      <button onClick={() => setIsDark(!isDark)} className="p-2 border border-borderColor">
+      {/* <button onClick={() => setIsDark(!isDark)} className="p-2 border border-borderColor">
         <IconComponent />
-        </button>
+        </button> */}
       <div className="Main">  
         <Main />
       </div>
