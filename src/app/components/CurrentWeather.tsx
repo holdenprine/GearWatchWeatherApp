@@ -1,5 +1,5 @@
-import React from 'react'
-import getCurrentWeather from "../api";
+import WeatherIcon from "./WeatherIcon";
+import { getCurrentWeather } from "../api";
 import { CiDroplet } from "react-icons/ci";
 import { TbWind } from "react-icons/tb";
 import { BsMoisture } from "react-icons/bs";
@@ -57,7 +57,7 @@ const CurrentWeather = () => {
     {
       id: 4,
       icon: <CloudCoverIcon />,
-      name: 'Clouds cover',
+      name: 'Cloud cover',
       value: Math.round(cloud_cover),
       // unit: units.cloud_cover,
       unit: '%',
@@ -75,8 +75,8 @@ const CurrentWeather = () => {
   return (
     <div className='CurrentWeather'>
       <div className='temperature'>
-        <div className='weather-icon'>
-          <img src={`/weather_icons/set04/big/${icon_num}.png`} alt={summary} />
+        <div className="weather-icon">
+          <WeatherIcon iconNumber={icon_num} summary={summary}/>
         </div>
         <div className='value'>
           {/* hard coded for now */}
@@ -94,7 +94,9 @@ const CurrentWeather = () => {
                 <div className='icon'>
                   {icon}
                 </div>
+                <div className='value'>{value} {unit}</div>
               </div>
+              <div className='name'>{name}</div>
             </div>
           </div>
         )
