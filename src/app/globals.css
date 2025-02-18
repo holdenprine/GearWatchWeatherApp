@@ -212,7 +212,7 @@ body {
   }
 }
 
-/* Current Waether */
+/* Current Weather */
 .CurrentWeather {
   @apply flex;
 }
