@@ -1,6 +1,8 @@
-import React from 'react'
 
-const DailyForecast = () => {
+const DailyForecast = ({data}) => {
+
+    console.log(data);
+    
   return (
     <div>DailyForecast</div>
   )

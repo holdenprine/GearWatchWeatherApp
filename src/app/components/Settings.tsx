@@ -8,7 +8,7 @@ const Settings = () => {
     const SettingsIcon = IoSettingsOutline as unknown as React.FC;
     const LightDarkToggle = TbSunMoon as unknown as React.FC;
 
-    const [isDark, setIsDark] = useState(false);
+    const [isDark, setIsDark] = useState(true);
 
 
     useEffect(() => {
